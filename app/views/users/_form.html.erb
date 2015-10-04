@@ -1,0 +1,19 @@
+<div class = "row">
+  <div class = "well col-md-8 col-md-offset-2">
+    <%= form_for @user do |f| %>
+    <%= f.label :fname, "First Name" %>
+    <%= f.text_field :fname %>
+
+    <%= f.label :lname, "Last Name" %>
+    <%= f.text_field :lname %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit(@user.new_record? ? 'Register' : 'Edit', class: "btn btn-success") %>
+    <% end %>
+  </div>
+</div>
