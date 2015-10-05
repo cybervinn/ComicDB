@@ -1,12 +1,29 @@
 <h1> List of All Users </h1>
 
-<% @users.each do |user| %>
-  <%= user.fname %>
-  <%= user.lname %>
-  <%= user.email %>
-  <%= link_to 'Edit', edit_user_path(user) %>
-  <%= link_to 'Delete', user_path(user), method: :delete %>
-  <hr>
-<% end %>
+<div class = "row">
+  <div class = "well col-md-8 col-md-offset-2">
+    
+    <% @users.each do |user| %>
+
+      First Name: <br/>
+      <%= user.fname %> <br/>
+      <br/>
+
+      Last Name: <br/>
+      <%= user.lname %> <br/>
+      <br/>
+
+      Email Address / Username: <br/>
+      <%= user.email %> <br/>
+      <br/>
+
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Delete', user_path(user), method: :delete %>
+      <hr>
+
+    <% end %>
+
+  </div>
+</div>
 
 

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "Profile has been created successfully"
-      redirect_to 'main'
+      redirect_to main_path
     else
       render 'new' #error: goes back to new page
     end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get 'pages/main' 
+  get 'pages/main', to: 'pages#main', as: 'main'
 
   resources :users
 
