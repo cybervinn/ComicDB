@@ -16,10 +16,11 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
 
-    if @user.save
-      flash[:success] = "Profile has been created successfully"
+    if @user.valid?
+      flash[:success] = "Profile has been created successfully and logged in"
+      session[:user_id] = @user.id
       redirect_to main_path
     else
       render 'new' #error: goes back to new page
