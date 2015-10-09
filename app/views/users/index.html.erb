@@ -2,7 +2,7 @@
 
 <div class = "row">
   <div class = "well col-md-8 col-md-offset-2">
-    
+
     <% @users.each do |user| %>
 
       First Name: <br/>
@@ -15,6 +15,10 @@
 
       Email Address / Username: <br/>
       <%= user.email %> <br/>
+      <br/>
+
+      Avatar: <br/>
+      <%= image_tag user.avatar.url(:thumb) %>
       <br/>
 
       <%= link_to 'Edit', edit_user_path(user) %>

@@ -1,8 +1,8 @@
 <div class = "row">
   <div class = "well well-lg col-md-6 col-md-offset-3">
-    <div class ="center">
-    <%= form_for @user do |f| %>
 
+    <%= form_for @user, html: { multipart: true } do |f| %>
+test
     <%= f.label :fname, "First Name" %> 
     <%= f.text_field :fname %> <br/> <br/>
 
@@ -15,11 +15,17 @@
     <%= f.label :password %>
     <%= f.password_field :password %> <br/>
 
+    <% if !@user.new_record? %>
+
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+
+    <% end %>
+
     <hr/>
 
     <%= f.submit(@user.new_record? ? 'Register' : 'Save Changes', class: "btn btn-success") %>
 
     <% end %>
-  </div>
   </div>
 </div>
