@@ -1,6 +1,20 @@
-<ul>
-  <li>Login</li>
-  <li>Logout</li>
-  <li> <%= link_to 'Sign-up', new_user_path %></li>
-  <li> <%= link_to 'All Users', users_path %></li>
-</ul>
+
+<% if current_user %>
+  <p>Logged in as <%= current_user.fname %> </p>
+  
+  <ul>
+    <li> <%= link_to 'Logout', logout_path %> </li>
+    <li> <%= link_to 'All Users', users_path %> </li>
+  </ul>
+
+  <hr/>
+
+<% else %>
+  <ul>
+    <li> <%= link_to 'Login', login_path %> </li>
+    <li> <%= link_to 'Sign-up', new_user_path %> </li>
+  </ul>
+
+  <hr/>
+
+<% end %>

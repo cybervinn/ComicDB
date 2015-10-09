@@ -2,32 +2,38 @@
 <html>
 <head>
   <title>ComicDB</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
+
 <body>
 
+  <%= render :partial => 'layouts/navigation' %>
 
-<%= render :partial => 'layouts/navigation' %>
+  <div class = "row">
+    <div class = "col-md-4 col-md-offset-4">
+      <% flash.each do |message_type, message| %>
+        <div class = "alert alert-<%= message_type %>"> <%= message %>
+          <a class = "close" data-dismiss ="alert"> &#215; </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div class="flash">
-   <% if flash[:notice] %>
-     <div class="notice">
-       <%= flash[:notice] %>
-     </div>
-   <% end %>
-   
-   <% if flash[:alert] %>
-     <div class="alert">
-       <%= flash[:alert] %>
-     </div>
-   <% end %>
- </div>
-
-
-<%= yield %>
-
+  <%= yield %>
 
 </body>
+
 </html>

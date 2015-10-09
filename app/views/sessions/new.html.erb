@@ -1,0 +1,21 @@
+<h1 class = "center"> Login Page </h1>
+
+<div class = "row">
+  <div class = "well col-md-4 col-md-offset-4">
+
+  <%= form_tag '/login' do %>
+
+    <%= label_tag :email, 'Email Address' %>
+    <%= text_field_tag :email %> <br/> <br/>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+    <hr/>
+
+    <%= submit_tag 'Login', class: 'btn btn-success' %>
+
+  <% end %>
+
+  </div>
+</div>

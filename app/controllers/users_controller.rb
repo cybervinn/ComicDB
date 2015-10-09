@@ -16,11 +16,12 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
 
-    if @user.save
-      flash[:success] = "Profile has been created successfully"
-      redirect_to 'main'
+    if @user.valid?
+      flash[:success] = "Profile has been created successfully and logged in"
+      session[:user_id] = @user.id
+      redirect_to main_path
     else
       render 'new' #error: goes back to new page
     end
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
 
     if @user.update(user_params)
       flash[:success] = "Profile has been updated successfully"
-      redirect_to root_path
+      redirect_to users_path
     else
       render 'edit'
     end
@@ -61,7 +62,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:fname,
                                    :lname,
                                    :email,
-                                   :password)
+                                   :password,
+                                   :avatar)
     end
 
 end
