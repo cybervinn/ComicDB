@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   def destroy
     flash[:success] = "Goodbye #{current_user.fname}, you have been logged off"
     session[:user_id] = nil
-    redirect_to main_path
+    redirect_to root_path
   end
 
 end
