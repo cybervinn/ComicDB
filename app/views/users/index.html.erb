@@ -1,33 +1,38 @@
-<h1> List of All Users </h1>
+<h1 class = "text-center"> List of All Users </h1>
 
 <div class = "row">
-  <div class = "well col-md-8 col-md-offset-2">
+  <div class = "well col-md-10 col-md-offset-1">
+    <table class="table table-striped table-hover">
 
-    <% @users.each do |user| %>
+      <thead>
 
-      First Name: <br/>
-      <%= user.fname %> <br/>
-      <br/>
+        <th> Avatar </th>
+        <th> First Name: </th>
+        <th> Last Name: </th>
+        <th> Nickname: </th>
+        <th> Email Address / Username: </th>
+        <th> Admin </td>
 
-      Last Name: <br/>
-      <%= user.lname %> <br/>
-      <br/>
+      </thead>
 
-      Email Address / Username: <br/>
-      <%= user.email %> <br/>
-      <br/>
+      <tbody>
 
-      Avatar: <br/>
-      <%= image_tag user.avatar.url(:thumb) %>
-      <br/>
+        <% @users.each do |user| %>
 
-      <%= link_to 'Edit', edit_user_path(user) %>
-      <%= link_to 'Delete', user_path(user), method: :delete %>
-      <hr>
+          <tr>
+            <td><%= image_tag user.avatar.url(:thumb) %></td>
+            <td><%= user.fname %></td>
+            <td><%= user.lname %></td>
+            <td><%= user.nickname %></td>
+            <td><%= user.email %></td>
 
-    <% end %>
+            <td><%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Delete', user_path(user), method: :delete %> </td>
+          </tr>
 
+        <% end %>
+
+        </tbody>
+
+    </table>
   </div>
 </div>
-
-
