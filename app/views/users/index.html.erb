@@ -1,3 +1,4 @@
+
 <h1 class = "text-center"> List of All Users </h1>
 
 <div class = "row">
@@ -11,7 +12,7 @@
         <th> Last Name: </th>
         <th> Nickname: </th>
         <th> Email Address / Username: </th>
-        <th> Admin </td>
+        <th> Admin: </td>
 
       </thead>
 
@@ -20,13 +21,16 @@
         <% @users.each do |user| %>
 
           <tr>
-            <td><%= image_tag user.avatar.url(:thumb) %></td>
-            <td><%= user.fname %></td>
-            <td><%= user.lname %></td>
-            <td><%= user.nickname %></td>
-            <td><%= user.email %></td>
-
-            <td><%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Delete', user_path(user), method: :delete %> </td>
+            <td> <%= image_tag user.avatar.url(:thumb) %></td>
+            <td> <%= user.fname %></td>
+            <td> <%= user.lname %></td>
+            <td> <%= user.nickname %></td>
+            <td> <%= user.email %></td>
+            <td> <%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Delete', user_path(user), method: :delete %>
+                 <% if user.admin? %>
+                  ADMIN                  
+                 <% end %>
+            </td>
           </tr>
 
         <% end %>

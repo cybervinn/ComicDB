@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = User.find(params[:id])
+
   end
 
 
@@ -48,12 +51,12 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @user = User.find(params[:id])
 
     if @user.destroy
-      flash[:sucess] = "Account has been deleted successfuly"
+      flash[:success] = "Account has been deleted successfuly"
       redirect_to users_path
     end
+
   end
 
   private
@@ -62,9 +65,23 @@ class UsersController < ApplicationController
       params.require(:user).permit(:fname,
                                    :lname,
                                    :nickname,
+                                   :admin,
                                    :email,
                                    :password,
                                    :avatar)
     end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def require_same_user
+
+      if current_user != @user && !current_user.admin?
+        flash[:danger] = "You can only edit your own profile #{current_user.nickname}"
+        redirect_to :back
+      end
+    end
+
 
 end
