@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
                                     format: { with: VALID_EMAIL_REGEX }
   
   #Used with Bcrypt
-  has_secure_password 
+  has_secure_password
+  validates_presence_of :password_confirmation, presence: true, confirmation: true
 
   #Used with Paperclip
   has_attached_file :avatar, styles: { medium: "300x300>", 

@@ -29,6 +29,12 @@
         <%= f.password_field :password %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+
     </div>
 
     <div class ="col-md-6">
@@ -47,7 +53,7 @@
 
       <div class="form-group">
 
-        <% if current_user.admin? %>
+        <% if logged_in? && current_user.admin? %>
           <%= f.label :admin, "Administrator" %>
           <%= f.check_box(:admin) %>
         <% end %>

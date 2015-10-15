@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/main', to: 'pages#main'
+
+
   
   resources :users
 
