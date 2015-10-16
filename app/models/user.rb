@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
   #Used with Bcrypt
   has_secure_password
-  validates_presence_of :password_confirmation, presence: true, confirmation: true
+  validates_presence_of :password_confirmation, confirmation: true, on: [:create]
 
   #Used with Paperclip
   has_attached_file :avatar, styles: { medium: "300x300>", 
